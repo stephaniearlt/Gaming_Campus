@@ -2,6 +2,8 @@
 @font-face {
     font-family: "Montserrat";
     src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
+    font-display: swap;
+    /* Affiche une police système avant de charger la police personnalisée */
 }
 
 /* RESET ET STYLES GÉNÉRAUX */
@@ -21,6 +23,32 @@ body {
 a {
     text-decoration: none;
     color: rgb(15, 15, 15);
+}
+
+/* LIEN D'ÉVITEMENT */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 2px;
+    height: 2px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    position: static;
+    left: auto;
+    background: rgb(95, 4, 170);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+:focus {
+    outline: 2px solid rgb(95, 4, 170);
+    outline-offset: 2px;
 }
 
 /* BOUTONS GÉNÉRAUX */
@@ -90,20 +118,19 @@ nav li:last-child::before {
 }
 
 /* HEADER */
-.main-header {
-    background: url(./assets/img/bg.jpg);
-    background-position: center;
+.main-hero {
+    background: url(./assets/img/bg.webp) center no-repeat;
     background-size: 100% auto;
     color: white;
     padding: 60px;
 }
 
-.main-header button {
+.main-hero button {
     padding: 15px 30px;
     letter-spacing: 2px;
 }
 
-.main-header i {
+.main-hero i {
     transform: translateX(5px);
 }
 
@@ -304,9 +331,13 @@ h1 {
     margin-bottom: 15px;
 }
 
-.list h3 {
-    font-size: 0.8rem;
-    margin-bottom: 8px;
+.email-link {
+    text-decoration: none;
+}
+
+.email-link:focus {
+    outline: 2px solid rgb(95, 4, 170);
+    outline-offset: 2px;
 }
 
 .list .network {
@@ -315,7 +346,11 @@ h1 {
 
 .icon-social-media i {
     font-size: 0.8rem;
-    margin: 0 12px 30px 0;
+    margin: 0 20px 30px 0;
+}
+
+.icon-social-media i:focus {
+    outline: 2px solid rgb(95, 4, 170);
 }
 
 .copyright {
@@ -412,8 +447,25 @@ footer ul {
         display: none;
     }
 
+    .main-hero {
+        padding: 0;
+    }
+
+    #logo img {
+        width: 350px;
+        margin-top: 50px;
+    }
+
+    .main-hero button {
+        margin-bottom: 50px;
+    }
+
     .header-text {
         padding: 45px 0 0;
+    }
+
+    .header-text p {
+        margin-bottom: 50px;
     }
 
     .icon-part-container {
@@ -470,7 +522,7 @@ footer ul {
     }
 }
 
-@media screen and (max-width: 545px) {
+@media screen and (max-width: 645px) {
     body {
         width: 100%;
     }
@@ -482,5 +534,32 @@ footer ul {
     .header-text {
         font-size: 0.8rem;
         padding: 15px;
+    }
+
+    .header-text p {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 412px) {
+    #logo img {
+        width: 150px;
+    }
+
+    .main-hero {
+        background: url(./assets/img/bg.webp) center no-repeat;
+    }
+
+    .main-hero button {
+        font-size: 0.6rem;
+    }
+
+    .lip-logo img {
+        height: 160px;
+        width: 250px;
+    }
+
+    .icon-part h2 {
+        font-size: 1rem;
     }
 }
